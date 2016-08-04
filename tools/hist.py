@@ -1,17 +1,12 @@
 from gitrepo import is_repo
 from os.path import isfile
+import os
 
 """
     Get the location of the repo file
 """
 def locate_file():
     return file_loc 
-
-"""
-    Ensure the repo file exists at the given location
-"""
-def assert_file():
-    init_file_loc()
 
 """
     Get the path of the last repo that was 'gimme'd

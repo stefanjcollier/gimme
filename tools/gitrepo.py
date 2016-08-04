@@ -1,6 +1,6 @@
 from os import listdir
 from os.path import join, isdir, isfile
-from core import outi
+from core import out
 import os
 
 # The location of the file that says where the git repo is stored
@@ -18,6 +18,9 @@ def define_git_home():
 """
 def is_repo(path):
     return '.git' in listdir(path)
+
+def locate_git():
+    return git_home
 
 """
     Returns all the folders that are git repos
@@ -37,6 +40,6 @@ if not git_home:
     define_git_home()
 
 elif not isdir(git_home):
-    out('The chosen path for your git home is not a valid path, please enter a new one')
+    out('The chosen path (\'%s\') for your git home is not a valid path, please enter a new one' % git_home)
     define_git_home()
 
