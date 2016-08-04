@@ -19,7 +19,6 @@
 #---
 
 import sys
-from os import listdir
 from tools.core import *
 from tools.gitrepo import *
 from tools.hist import *
@@ -74,3 +73,5 @@ if __name__ == '__main__':
     else:
         search=' '.join(sys.argv[1:]) 
         find_matching_repo(git_home, search)
+
+
