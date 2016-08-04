@@ -24,25 +24,9 @@ from tools.core import *
 from tools.gitrepo import *
 from tools.hist import *
 
-def ensure_git_home():
-    # The folder where all the git repos are stored
-    git = locate_git()
-
-    # Validate git variable
-    if not isdir(git):
-        out('The folder \'%s\' is not a valid directory' % git)
-        exit(-2)
-
-    elif listdir(git) == []:
-        out('There are no repos in your git folder (%s) ' % git)
-        exit(-2)
-
-    else:
-        return git
-
 # Find the repo based on search
 def find_matching_repo(git, search, allow_first = False):
-    repos = get_repos(git)
+    repos = get_repos()
     matchers = [repo for repo in repos if search in repo ]
     if len(matchers) == 0:
         out('No repo matches the description \'%s\'' % search)
@@ -77,7 +61,6 @@ if __name__ == '__main__':
         exit(0)
     
     first_arg = sys.argv[1]
-    git_home = ensure_git_home()
     assert_file()
 
     if first_arg == '-':
