@@ -24,8 +24,10 @@ from tools.gitrepo import *
 from tools.hist import *
 
 # Find the repo based on search
-def find_matching_repo(git, search, allow_first = False):
+def find_matching_repo(search, allow_first = False):
+    git = locate_git()
     repos = get_repos()
+
     matchers = [repo for repo in repos if search in repo ]
     if len(matchers) == 0:
         out('No repo matches the description \'%s\'' % search)
@@ -39,7 +41,7 @@ def find_matching_repo(git, search, allow_first = False):
     else:
         if allow_first:
             first_repo = join(git,matchers[0])
-            save_selected_git_repo(selected_repo)
+            save_selected_git_repo(first_repo)
             exit(0)
         else:
             out('Your search produced more than one repo:')
@@ -57,21 +59,21 @@ def display_usage():
 if __name__ == '__main__':
     if len(sys.argv) < 2 or sys.argv[1] == '--help':
         display_usage()
-        exit(0)
+        exit(5)
     
     first_arg = sys.argv[1]
-    assert_file()
 
     if first_arg == '-':
         if not get_last_git_repo():
             out('You have not yet used \'gimme\' to get to a repo')
+            exit(2)
      
     elif first_arg in ['-f', '--force-first']:
         search=' '.join(sys.argv[2:])
-        find_matching_repo(git_home, search, True)
+        find_matching_repo(search, True)
 
     else:
         search=' '.join(sys.argv[1:]) 
-        find_matching_repo(git_home, search)
+        find_matching_repo(search)
 
 

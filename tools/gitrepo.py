@@ -10,8 +10,9 @@ git_home_loc_path = '%s/.stools_config/gimme/git_home_loc.txt' % os.path.expandu
     Asks the user for the git home
 """
 def define_git_home():
+    inp = raw_input("gimme: Please enter your the location of the folder holding all your git repos\n>")
     git_loc_file = open(git_home_loc_path, 'w')
-    git_loc_file.write(raw_input("gimme: Please enter your the location of the folder holding all your git repos\n>"))
+    git_loc_file.write(inp)
 
 """
     A dir is a repo if it contains a .git folder within it
@@ -34,7 +35,7 @@ def get_repos():
 if not isfile(git_home_loc_path):
     define_git_home()
 
-git_home = open(git_home_loc_path,'r').readline()
+git_home = open(git_home_loc_path,'r').readline().rstrip()
 if not git_home:
     out('The path to your git home is empty, please enter a new one')
     define_git_home()
