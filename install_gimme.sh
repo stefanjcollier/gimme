@@ -23,9 +23,9 @@ if [ -z $1 ]; then
 
     exit -2
 fi
-echo '===================='
-echo '  Installing gimme'
-echo '===================='
+echo '============================='
+echo '      Installing gimme'
+echo '============================='
 echo '+Making folders'
 mkdir ~/.stools_config && true
 mkdir ~/.stools_config/gimme && true
@@ -44,3 +44,16 @@ fi
 echo $git_home > ~/.stools_config/gimme/git_home_loc.txt
 echo 'install_gimme: Install complete'
 
+echo ''
+echo ''
+echo '============================='
+echo '  Add this to your .bashrc'
+echo '============================='
+
+echo ''
+echo "function gimme {"
+echo "   python ${PWD}/gimme.py \$*"
+echo "   if [ $? -eq 0  ]; then"
+echo "       cd `cat ~/.stools_config/gimme/gimme_hist.txt`"
+echo "   fi"
+echo "}"
