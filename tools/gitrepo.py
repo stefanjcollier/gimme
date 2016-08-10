@@ -31,10 +31,11 @@ def get_repos():
     dirs = listdir(git)
     return [dir for dir in dirs if isdir(join(git,dir)) and is_repo(join(git,dir))]
 
-#Ensure file exists and git_home is a real git folder
+# Ensure file exists and git_home is a real git folder
 if not isfile(git_home_loc_path):
     define_git_home()
 
+# Ensure the location in the file is valid
 git_home = open(git_home_loc_path,'r').readline().rstrip()
 if not git_home:
     out('The path to your git home is empty, please enter a new one')

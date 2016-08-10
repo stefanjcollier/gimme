@@ -1,4 +1,4 @@
-#!/bin/python2
+#!/usr/bin/env python
 
 #---
 # Description:
@@ -12,9 +12,6 @@
 # Example:
 #   $gimme example
 #   >/Users/MyUser/Git/my-example-repo/
-#
-# Requirements:
-#       ?None Yet?
 #
 #---
 
@@ -33,6 +30,7 @@ def find_matching_repo(search, allow_first = False):
         out('No repo matches the description \'%s\'' % search)
         exit(-1)
 
+    #Only found one matching repo
     elif len(matchers) == 1:
         selected_repo = join(git,matchers[0])
         save_selected_git_repo(selected_repo)

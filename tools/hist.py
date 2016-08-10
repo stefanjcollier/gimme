@@ -17,6 +17,7 @@ def get_last_git_repo():
         return path
     else: 
         return None
+
 """
     Store the path of the repo that will be 'gimme'd
 """
