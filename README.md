@@ -21,5 +21,5 @@ Then copy the outputted function to your `.bashrc`.
 git clone https://github.com/stefanjcollier/gimme.git
 ./install_gimme.sh /Path/to/git/collection/
 ```
-[Example Installation](pages/example_install.md)
+[Example Installation](https://github.com/stefanjcollier/gimme/blob/master/pages/exmaple_install.md)
 
