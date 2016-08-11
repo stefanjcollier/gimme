@@ -16,10 +16,12 @@
 #  where <path> is the path to the users folder with all their git repos
 #---
 if [ -z $1 ]; then
+    echo 'You forgot the first arguement!'
+    echo ''
     echo 'Usage:'
     echo '   ./install_gimme.sh <path>      Installs the gimme command' 
     echo ''
-    echo '   Where <path> is the path to the users folder with all their git repos'
+    echo 'Where <path> is the path to the users folder with all their git repos'
 
     exit -2
 fi
@@ -53,7 +55,7 @@ echo '============================='
 echo ''
 echo "function gimme {"
 echo "   python ${PWD}/gimme.py \$*"
-echo "   if [ $? -eq 0  ]; then"
-echo "       cd `cat ~/.stools_config/gimme/gimme_hist.txt`"
+echo "   if [ \$? -eq 0  ]; then"
+echo "       cd \`cat ~/.stools_config/gimme/gimme_hist.txt\`"
 echo "   fi"
 echo "}"
