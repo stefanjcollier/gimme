@@ -2,7 +2,7 @@
 This is the expected output if you are a user 'stcollier' and your collection of git repos is at the path '/Users/stcollier/Git/'
 
 ```
-stcollier@Steftop:~/Git/gimme$ ./install_gimme.sh /Users/stcollier/Git/
+stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh /Users/stcollier/Git/
 =============================
       Installing gimme
 =============================
@@ -24,5 +24,5 @@ function gimme {
        cd `cat ~/.stools_config/gimme/gimme_hist.txt`
    fi
 }
-stcollier@LONC02RT05GG8WL:~/.stefanscripts/gimme$
+stcollier@StefTop:~/.stefanscripts/gimme$
 ```
