@@ -2,6 +2,8 @@ from os import listdir
 from os.path import join, isdir, isfile
 from core import out
 import os
+import subprocess
+
 
 # The location of the file that says where the git repo is stored
 git_home_loc_path = '%s/.stools_config/gimme/git_home_loc.txt' % os.path.expanduser('~')
@@ -27,9 +29,12 @@ def locate_git():
     Returns all the folders that are git repos
 """
 def get_repos():
-    git = locate_git()
-    dirs = listdir(git)
-    return [dir for dir in dirs if isdir(join(git,dir)) and is_repo(join(git,dir))]
+    output = subprocess.check_output([
+        'find',
+        os.path.expanduser('~'),
+        '-name',
+        '.git']).split('\n')[:-1]
+    return (git_path[:-4] for git_path in output) 
 
 # Ensure file exists and git_home is a real git folder
 if not isfile(git_home_loc_path):
