@@ -17,7 +17,7 @@ def get_repos():
         os.path.expanduser('~'),
         '-name',
         '.git']).split('\n')[:-1]
-    return (git_path[:-4] for git_path in output) 
+    return (git_path[:-4] for git_path in output if '/.' not in git_path[:-4]) 
 
 
 
