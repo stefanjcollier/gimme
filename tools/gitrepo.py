@@ -1,4 +1,3 @@
-from os import listdir
 import os
 import subprocess
 
@@ -6,7 +5,7 @@ import subprocess
     A dir is a repo if it contains a .git folder within it
 """
 def is_repo(path):
-    return '.git' in listdir(path)
+    return '.git' in os.listdir(path)
 
 """
     Returns all the folders that are git repos
