@@ -19,7 +19,7 @@ Run the `install_gimme.sh` with the location of the folder that contains a colle
 Then copy the outputted function to your `.bashrc`.
 ``` bash 
 git clone https://github.com/stefanjcollier/gimme.git
-./install_gimme.sh /Path/to/git/collection/
+./install_gimme.sh
 ```
 [Example Installation](https://github.com/stefanjcollier/gimme/blob/master/pages/exmaple_install.md)
 

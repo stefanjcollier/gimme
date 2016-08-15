@@ -2,7 +2,7 @@
 This is the expected output if you are a user 'stcollier' and your collection of git repos is at the path '/Users/stcollier/Git/'
 
 ```
-stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh /Users/stcollier/Git/
+stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh 
 =============================
       Installing gimme
 =============================
@@ -10,7 +10,6 @@ stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh /Users/stcollier/Git/
 mkdir: /Users/stcollier/.stools_config: File exists
 mkdir: /Users/stcollier/.stools_config/gimme: File exists
 +Creating files
-+Saving git home to file
 install_gimme: Install complete
 
 
