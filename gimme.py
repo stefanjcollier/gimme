@@ -22,7 +22,6 @@ from tools.hist import *
 
 # Find the repo based on search
 def find_matching_repo(search, allow_first = False):
-    git = locate_git()
     repos = get_repos()
 
     matchers = [repo for repo in repos if search in repo ]
@@ -32,13 +31,13 @@ def find_matching_repo(search, allow_first = False):
 
     #Only found one matching repo
     elif len(matchers) == 1:
-        selected_repo = join(git,matchers[0])
+        selected_repo = matchers[0]
         save_selected_git_repo(selected_repo)
         exit(0)
 
     else:
         if allow_first:
-            first_repo = join(git,matchers[0])
+            first_repo = matchers[0]
             save_selected_git_repo(first_repo)
             exit(0)
         else:
