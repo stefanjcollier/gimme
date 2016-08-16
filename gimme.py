@@ -19,6 +19,47 @@ import sys
 from tools.core import *
 from tools.gitrepo import *
 from tools.hist import *
+import learn
+
+def print_options(paths):   
+    index = 0
+    for repo in paths:
+        print "\t#%d - \'%s\'" % (index, repo)
+        index += 1
+
+def substring_of_any_path(substring, paths):
+    return substring != '' and any([substring in path for path in paths])
+
+def option_in_range(option,paths):
+    return option.isdigit() and int(option) in range(len(paths))
+
+def narrow_search_down(paths):
+    print_options(paths)
+    print 'Select an option by entering an option, e.g. $ 2'
+    print '  or enter another substring to narrow it down e.g. $ chef'
+    choice = raw_input('$ ')
+    while not (substring_of_any_path(choice, paths) or option_in_range(choice, paths)):
+        print 'Enter a valid string (see above).'
+        choice = raw_input('$ ')
+        
+    if option_in_range(choice, paths):
+        index = int(choice)
+        path = paths[index]
+        
+        learn.choose(path)
+        save_selected_git_repo(path)
+        exit(0)
+
+    elif substring_of_any_path(choice, paths):
+        less_paths = [path for path in paths if choice in path]
+        if len(less_paths) == 1:
+            selected_repo = less_paths[0]
+            learn.choose(path)
+            save_selected_git_repo(selected_repo)
+            exit(0)
+        else:
+            narrow_search_down(less_paths)
+
 
 # Find the repo based on search
 def find_matching_repo(search, allow_first = False):
@@ -37,14 +78,13 @@ def find_matching_repo(search, allow_first = False):
 
     else:
         if allow_first:
-            first_repo = matchers[0]
+            first_repo = learn.sort(matchers)[0]
             save_selected_git_repo(first_repo)
             exit(0)
         else:
             out('Your search produced more than one repo:')
-            for repo in matchers:
-                print "\t\'%s\'" % repo
             print 'Please be more specific'
+            narrow_search_down(matchers)
             exit(1)
 
 def display_usage():

@@ -1,4 +1,4 @@
-from gitrepo import is_repo
+import gitrepo 
 from os.path import isfile
 import os
 
@@ -13,7 +13,7 @@ def locate_file():
 """
 def get_last_git_repo():
     path = open(locate_file(),'r').readline()
-    if path and is_repo(path):
+    if path and gitrepo.is_repo(path):
         return path
     else: 
         return None
