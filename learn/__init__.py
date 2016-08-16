@@ -6,4 +6,6 @@ def sort(repos):
     #Do some stuff
     return repos
 
-
+def choose(path):
+    #inform the votes module
+    print 'chose %s' % path
