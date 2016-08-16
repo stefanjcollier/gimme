@@ -23,6 +23,7 @@ mkdir ~/.stools_config/gimme && true
 
 echo '+Creating files'
 touch ~/.stools_config/gimme/gimme_hist.txt
+touch ~/.stools_config/gimme/votes.csv
 
 echo 'install_gimme: Install complete'
 echo ''
