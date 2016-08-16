@@ -18,5 +18,5 @@ def get_repos():
         os.path.expanduser('~'),
         '-name',
         '.git']).split('\n')[:-1]
-    return learn.sort(git_path[:-4] for git_path in output if folder_not_hidden(git_path[:-4]))
+    return (git_path[:-4] for git_path in output if folder_not_hidden(git_path[:-4]))
 

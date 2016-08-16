@@ -54,7 +54,7 @@ def narrow_search_down(paths):
         less_paths = [path for path in paths if choice in path]
         if len(less_paths) == 1:
             selected_repo = less_paths[0]
-            learn.choose(path)
+            learn.choose(selected_repo)
             save_selected_git_repo(selected_repo)
             exit(0)
         else:
@@ -77,8 +77,9 @@ def find_matching_repo(search, allow_first = False):
         exit(0)
 
     else:
+        matchers = learn.sort(matchers)
         if allow_first:
-            first_repo = learn.sort(matchers)[0]
+            first_repo = matchers[0]
             save_selected_git_repo(first_repo)
             exit(0)
         else:
