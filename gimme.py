@@ -33,14 +33,21 @@ def substring_of_any_path(substring, paths):
 def option_in_range(option,paths):
     return option.isdigit() and int(option) in range(len(paths))
 
+def user_input():
+    try:
+        return raw_input('$ ')
+    except KeyboardInterrupt:
+        print ''
+        out('Cancelled')
+        exit(-1)
 def narrow_search_down(paths):
     print_options(paths)
     print 'Select an option by entering an option, e.g. $ 2'
     print '  or enter another substring to narrow it down e.g. $ chef'
-    choice = raw_input('$ ')
+    choice = user_input()
     while not (substring_of_any_path(choice, paths) or option_in_range(choice, paths)):
         print 'Enter a valid string (see above).'
-        choice = raw_input('$ ')
+        choice = user_input() 
         
     if option_in_range(choice, paths):
         index = int(choice)
