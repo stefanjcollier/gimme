@@ -16,9 +16,13 @@ def get_repos():
     output = subprocess.check_output([
         'find',
         os.path.expanduser('~'),
-        '-type',
+	'!','-readable','-prune', # Ignore 'Permission Denied' folders
+        '-o',
+	'-type',
         'd',
         '-name',
-        '.git']).split('\n')[:-1]
+        '.git',
+	'-print'
+	]).split('\n')[:-1]
     return (git_path[:-4] for git_path in output if folder_not_hidden(git_path[:-4]))
 
