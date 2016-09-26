@@ -16,7 +16,7 @@ def get_repos():
     output = subprocess.check_output([
         'find',
         os.path.expanduser('~'),
-	'!','-readable','-prune', # Ignore 'Permission Denied' folders
+	'!','-perm','-g+r,u+r,o+r','-prune', # Ignore 'Permission Denied' folders
         '-o',
 	'-type',
         'd',
