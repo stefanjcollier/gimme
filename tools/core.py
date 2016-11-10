@@ -32,3 +32,10 @@ def user_input():
         print ''
         out('Cancelled')
         exit(-1)
+
+
+def display_usage():
+    print "Usage:"
+    print "   $gimme <substring>                      # Return the path to the repo that contains that substring"
+    print "   $gimme [-f | --force-first] <substring> # Return the first path to the repo that contains that substring"
+    print "   $gimme -                                # Return the last repo that was searched for"

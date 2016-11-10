@@ -16,6 +16,8 @@
 #---
 
 import sys
+import configparser
+
 from tools.core import *
 from tools.gitrepo import *
 from tools.hist import *
@@ -57,7 +59,7 @@ def narrow_search_down(paths):
 
     # Or if it was a substring
     elif substring_of_any_path(choice, paths):
-        less_paths = [path for path in paths if choice in path]
+        less_paths = set([path for path in paths if choice in path])
         if len(less_paths) == 1:
             selected_repo = less_paths[0]
             learn.choose(selected_repo)
@@ -93,18 +95,11 @@ def find_matching_repo(search_term, allow_first=False):
             narrow_search_down(matchers)
             exit(1)
 
-
-def display_usage():
-    print "Usage:"
-    print "   $gimme <substring>                      # Return the path to the repo that contains that substring"
-    print "   $gimme [-f | --force-first] <substring> # Return the first path to the repo that contains that substring"
-    print "   $gimme -                                # Return the last repo that was searched for"
-
 if __name__ == '__main__':
     if len(sys.argv) < 2 or sys.argv[1] == '--help':
         display_usage()
         exit(5)
-    
+
     first_arg = sys.argv[1]
 
     if first_arg == '-':
@@ -115,6 +110,16 @@ if __name__ == '__main__':
     elif first_arg in ['-f', '--force-first']:
         search = ' '.join(sys.argv[2:])
         find_matching_repo(search, True)
+
+    elif first_arg in ['-a', '--add-path']:
+        new_search_path = ' '.join(sys.argv[2:])
+        if new_search_path:
+            try:
+                gitrepo.append_to_search_file(new_search_path)
+            except PathDoesNotExistException as ex:
+                print ex.message
+        else:
+            out('That was blank, please enter a valid path next time')
 
     else:
         search = ' '.join(sys.argv[1:])
