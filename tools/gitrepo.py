@@ -5,12 +5,15 @@ from os.path import isfile, isdir
 
 file_loc = '%s/.stools_config/gimme/other_search_locs.txt' % os.path.expanduser('~')
 
+
 class PathDoesNotExistException(Exception):
     pass
+
 
 def is_repo(path):
     """ A dir is a repo if it contains a .git folder within it """
     return '.git' in os.listdir(path)
+
 
 def get_repos():
     """ Returns all the folders that are git repos """

@@ -16,7 +16,6 @@
 #---
 
 import sys
-import configparser
 
 from tools.core import *
 from tools.gitrepo import *
@@ -59,7 +58,7 @@ def narrow_search_down(paths):
 
     # Or if it was a substring
     elif substring_of_any_path(choice, paths):
-        less_paths = set([path for path in paths if choice in path])
+        less_paths = list(set([path for path in paths if choice in path]))
         if len(less_paths) == 1:
             selected_repo = less_paths[0]
             learn.choose(selected_repo)
@@ -72,7 +71,7 @@ def narrow_search_down(paths):
 # Find the repo based on search
 def find_matching_repo(search_term, allow_first=False):
     # Find the repos that match the search string
-    matchers = [repo for repo in get_repos() if search_term in repo]
+    matchers = list(set([repo for repo in get_repos() if search_term in repo]))
     if len(matchers) == 0:
         out('No repo matches the description \'%s\'' % search_term)
         exit(-1)
