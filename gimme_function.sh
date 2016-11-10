@@ -18,6 +18,6 @@
 function gimme {
 	python #GIMME_HOME#/gimme.py $*
 	if [ $? -eq 0 ]; then
-		cd `cat  ~/stools_config/gimme/gimme_hist.txt`
+		cd `cat  ~/.stools_config/gimme/gimme_hist.txt`
 	fi
 }

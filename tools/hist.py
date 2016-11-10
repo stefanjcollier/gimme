@@ -12,7 +12,7 @@ def locate_file():
     Get the path of the last repo that was 'gimme'd
 """
 def get_last_git_repo():
-    path = open(locate_file(),'r').readline()
+    path = open(locate_file(), 'r').readline()
     if path and gitrepo.is_repo(path):
         return path
     else: 

@@ -21,14 +21,17 @@ from tools.gitrepo import *
 from tools.hist import *
 import learn
 
-def print_options(paths):   
+
+def print_options(paths):
     index = 0
     for repo in paths:
         print "\t#%d - \'%s\'" % (index, repo)
         index += 1
 
+
 def substring_of_any_path(substring, paths):
     return substring != '' and any([substring in path for path in paths])
+
 
 def option_in_range(option,paths):
     return option.isdigit() and int(option) in range(len(paths))
@@ -40,6 +43,8 @@ def user_input():
         print ''
         out('Cancelled')
         exit(-1)
+
+
 def narrow_search_down(paths):
     print_options(paths)
     print 'Select an option by entering an option, e.g. $ 2'
@@ -94,6 +99,7 @@ def find_matching_repo(search, allow_first = False):
             print 'Please be more specific'
             narrow_search_down(matchers)
             exit(1)
+
 
 def display_usage():
     print "Usage:"
