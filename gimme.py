@@ -33,22 +33,29 @@ def option_in_range(option,paths):
 
 
 def narrow_search_down(paths):
+    """
+        Given the reduced options (from the command argument).
+        Loop allowing the user to reduce the results and choose an option
+    """
     print_options(paths)
     print 'Select an option by entering an option, e.g. $ 2'
     print '  or enter another substring to narrow it down e.g. $ chef'
     choice = user_input()
+
+    # Ensure that the user chooses a valid substring or index
     while not (substring_of_any_path(choice, paths) or option_in_range(choice, paths)):
         print 'Enter a valid string (see above).'
         choice = user_input() 
-        
+
+    # Determine if it was a index
     if option_in_range(choice, paths):
-        index = int(choice)
-        path = paths[index]
+        path = paths[int(choice)]
         
         learn.choose(path)
         save_selected_git_repo(path)
         exit(0)
 
+    # Or if it was a substring
     elif substring_of_any_path(choice, paths):
         less_paths = [path for path in paths if choice in path]
         if len(less_paths) == 1:
@@ -61,15 +68,14 @@ def narrow_search_down(paths):
 
 
 # Find the repo based on search
-def find_matching_repo(search, allow_first = False):
-    repos = get_repos()
-
-    matchers = [repo for repo in repos if search in repo ]
+def find_matching_repo(search_term, allow_first=False):
+    # Find the repos that match the search string
+    matchers = [repo for repo in get_repos() if search_term in repo]
     if len(matchers) == 0:
-        out('No repo matches the description \'%s\'' % search)
+        out('No repo matches the description \'%s\'' % search_term)
         exit(-1)
 
-    #Only found one matching repo
+    # Only found one matching repo
     elif len(matchers) == 1:
         selected_repo = matchers[0]
         save_selected_git_repo(selected_repo)
@@ -105,11 +111,11 @@ if __name__ == '__main__':
         if not get_last_git_repo():
             out('You have not yet used \'gimme\' to get to a repo')
             exit(2)
-     
+
     elif first_arg in ['-f', '--force-first']:
-        search=' '.join(sys.argv[2:])
+        search = ' '.join(sys.argv[2:])
         find_matching_repo(search, True)
 
     else:
-        search=' '.join(sys.argv[1:]) 
+        search = ' '.join(sys.argv[1:])
         find_matching_repo(search)

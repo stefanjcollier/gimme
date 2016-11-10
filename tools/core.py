@@ -1,6 +1,8 @@
 
 def out(text):
+    """ A pretty print using the name of the function """
     print "gimme: %s" % text
+
 
 def folder_not_hidden(path):
     """
@@ -21,7 +23,9 @@ def print_options(paths):
         print "\t#%d - \'%s\'" % (index, repo)
         index += 1
 
+
 def user_input():
+    """ A nice controlled method to accept user input handling the KeyboardInterrupt gracefully """
     try:
         return raw_input('$ ')
     except KeyboardInterrupt:
