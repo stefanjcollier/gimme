@@ -22,27 +22,14 @@ from tools.hist import *
 import learn
 
 
-def print_options(paths):
-    index = 0
-    for repo in paths:
-        print "\t#%d - \'%s\'" % (index, repo)
-        index += 1
-
-
 def substring_of_any_path(substring, paths):
+    """ Return TRUE if the substring is a subtring of any the paths """
     return substring != '' and any([substring in path for path in paths])
 
 
 def option_in_range(option,paths):
+    """ Return TRUE if the option is a valid index to one of the paths """
     return option.isdigit() and int(option) in range(len(paths))
-
-def user_input():
-    try:
-        return raw_input('$ ')
-    except KeyboardInterrupt:
-        print ''
-        out('Cancelled')
-        exit(-1)
 
 
 def narrow_search_down(paths):
