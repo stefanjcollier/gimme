@@ -7,6 +7,7 @@
 # Usage:
 #   $gimme <substring>                      # Return the path to the repo that contains that substring
 #   $gimme [-f | --force-first] <substring> # Return the first path to the repo that contains that substring
+#   $gimme [-a | --add-path] <path>         # Add a path to search tree
 #   $gimme -                                # Return the last repo that was searched for
 #
 # Example:
