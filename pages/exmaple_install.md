@@ -1,5 +1,5 @@
 # Example Install
-This is the expected output if you are a user 'stcollier' and your collection of git repos is at the path '/Users/stcollier/Git/'
+This is the expected output if you are a user 'stcollier'
 
 ```
 stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh 
@@ -12,8 +12,8 @@ stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh
          Installing gimme
 ==================================
 +Making folders
-mkdir: cannot create directory /home/stefan/.stools_config: File exists
-mkdir: cannot create directory /home/stefan/.stools_config/gimme: File exists
+mkdir: cannot create directory /home/stcollier/.stools_config: File exists
+mkdir: cannot create directory /home/stcollier/.stools_config/gimme: File exists
 +Creating files
 +Creating function file
 install_gimme: Install complete
