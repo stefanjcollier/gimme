@@ -17,11 +17,14 @@ Using a python script to find a git repository based on a subset of the name.
 ```
 ## Installation:
 Run the `install_gimme.sh` from within the gimme folder
-Then copy the outputted line to your `.bashrc` or likewise file
 ``` bash 
 git clone https://github.com/stefanjcollier/gimme.git
 cd gimme
 ./install_gimme.sh
+```
+Then copy the outputted line to your `.bashrc` or likewise file
+``` bash
+source ~/.stools_config/gimme/gimme_function.sh
 ```
 [Example Installation](https://github.com/stefanjcollier/gimme/blob/master/pages/exmaple_install.md)
 
