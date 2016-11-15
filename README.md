@@ -9,11 +9,25 @@ Using a python script to find a git repository based on a subset of the name.
    $gimme [-a | --add-path] <path>         # Add a path to search tree
    $gimme -                                # Return the last repo that was searched for
 ```
-## Example:
+## Examples:
+Using gimme when there is only one matching result
 ``` bash 
-   stefan:~$gimme example
-   Path set to /Users/stefan/Git/my-example-repo/
-   stefan:~/Git/my-example-repo/$ 
+   stcollier@StefTop:~$gimme example
+   Path set to /Users/stcollier/git/my-example-repo/
+   stcollier:~/git/my-example-repo $ 
+```
+Or when there is more than one initial matching result
+```
+stcollier@StefTop:~$ gimme agent
+gimme: Your search produced more than one repo:
+Please be more specific
+        #0 - '/home/stcollier/intelligent-agents-adx-agent/'
+        #1 - '/home/stcollier/sneakyprojects/bond-agent/'
+Select an option by entering an option, e.g. $ 2
+  or enter another substring to narrow it down e.g. $ chef
+$ bond
+Path set to /home/stcollier/sneakyprojects/bond-agent/
+stcollier@StefTop:/home/stcollier/sneakyprojects/bond-agent $
 ```
 ## Installation:
 Run the `install_gimme.sh` from within the gimme folder
