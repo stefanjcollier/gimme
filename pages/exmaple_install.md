@@ -3,25 +3,25 @@ This is the expected output if you are a user 'stcollier' and your collection of
 
 ```
 stcollier@StefTop:~/Git/gimme$ ./install_gimme.sh 
-=============================
-      Installing gimme
-=============================
+==================================
+         Running Checks
+==================================
++Installer running in correct pwd  [Pass]
+
+==================================
+         Installing gimme
+==================================
 +Making folders
-mkdir: /Users/stcollier/.stools_config: File exists
-mkdir: /Users/stcollier/.stools_config/gimme: File exists
+mkdir: cannot create directory /home/stefan/.stools_config: File exists
+mkdir: cannot create directory /home/stefan/.stools_config/gimme: File exists
 +Creating files
++Creating function file
 install_gimme: Install complete
 
+==================================
+  Add this line to your .bashrc:
+==================================
+If you don't, the command won't be in scope!
 
-=============================
-  Add this to your .bashrc
-=============================
-
-function gimme {
-   python /Users/stcollier/Git/gimme/gimme.py $*
-   if [ $? -eq 0  ]; then
-       cd `cat ~/.stools_config/gimme/gimme_hist.txt`
-   fi
-}
-stcollier@StefTop:~/.stefanscripts/gimme$
+source ~/.stools_config/gimme/gimme_function.sh
 ```

@@ -11,7 +11,10 @@ class PathDoesNotExistException(Exception):
 
 
 def is_repo(path):
-    """ A dir is a repo if it contains a .git folder within it """
+    """ A dir is a repo if it contains a .git folder within it
+    :param path -- The single location
+    :return True if the path is a code repository
+    """
     return '.git' in os.listdir(path)
 
 
