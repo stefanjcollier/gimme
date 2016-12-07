@@ -26,10 +26,8 @@ def get_repos():
         other_search_locations()
         + ['!', '-perm', '-g+r,u+r,o+r', '-prune',  # Ignore 'Permission Denied' folders
         '-o',
-        '-type',
-        'd',
-        '-name',
-        '.git',
+        '-type', 'd',
+        '-name', '.git',
         '-print'
     ]).split('\n')[:-1]
     return (git_path[:-4] for git_path in output if folder_not_hidden(git_path[:-4]))
